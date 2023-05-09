@@ -1,0 +1,20 @@
+version: "3"
+services:
+  db:
+    image: postgres
+    container_name: unicap-prisma
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=docker
+      - POSTGRES_DB=database
+      - PGDATA=/var/lib/postgresql/data/pgdata
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata:
+  node_modules:
